@@ -1,5 +1,5 @@
 import argparse
-from meanFilter import mean_filter
+from meanFilter import median_filter
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Applying image processing operation on a image')
@@ -7,5 +7,5 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    mean_filter(args.image_path)
+    median_filter(args.image_path)
 
