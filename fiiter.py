@@ -109,12 +109,18 @@ def otsu_thresholding(img_path):
     cv.waitKey(1)
 
 def edge_detection(img_path):
+    '''This function take in a path to the image on the computer and apply Edge Dectection using Sobel's operator to the photo and return a black and white photo only the edges
+
+    Attribute
+    -------------
+    img_path (String): the path to the image on the computer
+    '''
 
     print("edge_detection")
     #Have to read in the image as gray scale for threshold to work
     img = cv.imread(img_path, cv.IMREAD_GRAYSCALE)
 
-
+    #apply x and y direction kernels
     x = cv.Sobel(img, cv.CV_16S, 1, 0, ksize= 3)
     y = cv.Sobel(img, cv.CV_16S, 0, 1, ksize= 3)
 
