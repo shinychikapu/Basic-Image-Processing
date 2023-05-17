@@ -86,3 +86,24 @@ def sharpen(img_path):
     cv.waitKey(0)
     cv.destroyAllWindows()
     cv.waitKey(1)
+
+def otsu_thresholding(img_path):
+    '''This function take in a path to the image on the computer and apply Otsu's thresholding to the photo and return a black and white photo
+
+    Attribute
+    -------------
+    img_path (String): the path to the image on the computer
+    '''
+    print("Otsu's method for thresholding")
+    img = cv.imread(img_path)
+
+    new_img = np.zeros(img.shape)
+
+    opt_thr, img_ = cv.threshold(img,0, 255, type = cv.THRESH_OTSU + cv.THRESH_BINARY)
+    print("Optimal threshold value:", opt_thr)
+
+    cv.imshow('image', np.hstack((img, img_)))
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+    cv.waitKey(1)
+
