@@ -101,10 +101,29 @@ def otsu_thresholding(img_path):
 
     #threshold return optimal threshold and the changed image
     opt_thr, img_ = cv.threshold(img, thresh = 0, maxval = 255, type = cv.THRESH_OTSU + cv.THRESH_BINARY) 
-    print("Optimal threshold value:", opt_thr)
+    print(opt_thr)
 
     cv.imshow('image', np.hstack((img, img_)))
     cv.waitKey(0)
     cv.destroyAllWindows()
     cv.waitKey(1)
 
+def edge_detection(img_path):
+
+    print("edge_detection")
+    #Have to read in the image as gray scale for threshold to work
+    img = cv.imread(img_path, cv.IMREAD_GRAYSCALE)
+
+
+    x = cv.Sobel(img, cv.CV_16S, 1, 0, ksize= 3)
+    y = cv.Sobel(img, cv.CV_16S, 0, 1, ksize= 3)
+
+    abs_x = cv.convertScaleAbs(x)
+    abs_y = cv.convertScaleAbs(y)
+
+    photo = cv.addWeighted(abs_x, 0.5, abs_y, 0.5, 0)
+
+    cv.imshow('image', np.hstack((img, photo)))
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+    cv.waitKey(1)
