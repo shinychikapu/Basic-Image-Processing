@@ -135,7 +135,7 @@ def edge_detection(img_path):
     cv.waitKey(1)
 
 def gaussian_smooth(img_path):
-    '''This function take in a path to the image on the computer and apply Gaussian Blur to the photo and return a smoothed photo
+    '''This function take in a path to the image on the computer and apply Gaussian Blur to the photo and return a smoothed
 
     Attribute
     -------------
