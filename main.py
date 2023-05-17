@@ -1,5 +1,5 @@
 import argparse
-from fiiter import median_filter, mean_filter
+from fiiter import median_filter, mean_filter, sharpen
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Applying image processing operation on a image')
@@ -11,3 +11,5 @@ if __name__ == "__main__":
         median_filter(args.image_path)
     elif args.option == 2:
         mean_filter(args.image_path)
+    elif args.option == 3:
+        sharpen(args.image_path)
