@@ -133,3 +133,22 @@ def edge_detection(img_path):
     cv.waitKey(0)
     cv.destroyAllWindows()
     cv.waitKey(1)
+
+def gaussian_smooth(img_path):
+    '''This function take in a path to the image on the computer and apply Gaussian Blur to the photo and return a smoothed photo
+
+    Attribute
+    -------------
+    img_path (String): the path to the image on the computer
+    '''
+
+    print("Gaussian Blur")
+
+    img = cv.imread(img_path)
+
+    img_ = cv.GaussianBlur(img, (3,3), 0)
+
+    cv.imshow('image', np.hstack((img, img_)))
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+    cv.waitKey(1)
