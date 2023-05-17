@@ -95,11 +95,12 @@ def otsu_thresholding(img_path):
     img_path (String): the path to the image on the computer
     '''
     print("Otsu's method for thresholding")
-    img = cv.imread(img_path)
 
-    new_img = np.zeros(img.shape)
+    #Have to read in the image as gray scale for threshold to work
+    img = cv.imread(img_path, cv.IMREAD_GRAYSCALE)
 
-    opt_thr, img_ = cv.threshold(img,0, 255, type = cv.THRESH_OTSU + cv.THRESH_BINARY)
+    #threshold return optimal threshold and the changed image
+    opt_thr, img_ = cv.threshold(img, thresh = 0, maxval = 255, type = cv.THRESH_OTSU + cv.THRESH_BINARY) 
     print("Optimal threshold value:", opt_thr)
 
     cv.imshow('image', np.hstack((img, img_)))
