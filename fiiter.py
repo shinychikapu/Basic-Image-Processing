@@ -152,3 +152,25 @@ def gaussian_smooth(img_path):
     cv.waitKey(0)
     cv.destroyAllWindows()
     cv.waitKey(1)
+
+def harris(img_path):
+    img = cv.imread(img_path)
+    gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    #converting the pixel to float
+    gray = np.float32(gray)
+
+    #cornerHarris return a response matrix with the same size of the image
+    dst = cv.cornerHarris(gray,2,3,0.04) #src, block size, k size, k
+
+    #result is dilated for marking the corners, not important
+    #helps enlarge the corner region
+    dst_ = cv.dilate(dst,None)
+
+    # Threshold for an optimal value, it may vary depending on the image.
+    # Threshold vallue in this scenario is 1% of the maximum value in the responsse matrix
+    # Point which have higher value than this threshold is local maxima, which is an corner
+
+    img[dst_ > 0.01 * dst_.max()]= [0,0,255] #set corner to have red color
+    cv.imshow('dst',img)
+    if cv.waitKey(0) & 0xff == 27:
+        cv.destroyAllWindows()
