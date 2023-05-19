@@ -15,7 +15,7 @@ def median_filter(img_path):
     print("Median Filtering")
 
     img = cv.imread(img_path)
-    dst = cv.medianBlur(img,3)
+    dst = cv.medianBlur(img,15)
 
     cv.imshow('image', np.hstack((img, dst)))
     cv.waitKey(0)
